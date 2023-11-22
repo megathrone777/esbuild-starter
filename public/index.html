@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta
+      content="
+        initial-scale=1.0,
+        maximum-scale=1.0,
+        user-scalable=no,
+        width=device-width"
+      name="viewport"
+    >
+    <title>ESBuild starter</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+      @keyframes spin {
+        from {
+          transform: translateY(-50%) rotate(0deg);
+        }
+
+        to {
+          transform: translateY(-50%) rotate(360deg);
+        }
+      }
+
+      @font-face {
+        font-family: "Roboto";
+        font-weight: 400;
+        src: url("fonts/Roboto-Regular.ttf");
+      }
+
+      @font-face {
+        font-family: "Roboto";
+        font-weight: 500;
+        src: url("fonts/Roboto-Medium.ttf");
+      }
+
+      @font-face {
+        font-family: "Roboto";
+        font-weight: 700;
+        src: url("fonts/Roboto-Bold.ttf");
+      }
+
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        overflow-y: scroll;
+      }
+
+      .spinner {
+        animation: spin 0.5s linear infinite;
+        border-radius: 50%;
+        border: 10px solid #ff9b1b;
+        box-sizing: border-box;
+        border-top-color: transparent;
+        height: 60px;
+        left: 0;
+        margin-inline: auto;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>
+      This page requires JavaScript. Please activate it in your browser settings.
+    </noscript>
+
+    <div id="root">
+      <div class="spinner"></div>
+    </div>
+
+    <script src="js/bundle.js" type="module"></script>
+  </body>
+</html>
