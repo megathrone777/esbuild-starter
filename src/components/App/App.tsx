@@ -1,10 +1,14 @@
-import React from "react";
+import React, { lazy } from "react";
 import { StyleSheetManager, ThemeProvider } from "styled-components";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { NotFound, Layout } from "~/components";
 import { AppProvider } from "~/store";
 import { GlobalStyle, theme } from "~/theme";
+
+const HomePage: React.LazyExoticComponent<React.FC> = lazy(
+  () => import("~/pages/Home")
+);
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -14,7 +18,7 @@ const App: React.FC = () => {
       path: "/",
       children: [
         {
-          element: <div>Home</div>,
+          element: <HomePage />,
           index: true,
         },
         {

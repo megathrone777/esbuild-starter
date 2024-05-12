@@ -14,9 +14,7 @@ const options: BuildOptions = {
   entryPoints: [resolve(rootDir, "src/index.tsx")],
   format: "esm",
   plugins: [
-    eslintPlugin({
-      persistLintIssues: false,
-    }),
+    eslintPlugin(),
     esbuildTsChecker({
       enableBuild: false,
       failOnError: false,
