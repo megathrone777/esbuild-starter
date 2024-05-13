@@ -1,4 +1,5 @@
 import { BuildOptions, BuildResult, build } from "esbuild";
+import eslintPlugin from "esbuild-plugin-eslint";
 import { clean } from "esbuild-plugin-clean";
 import { copy } from "esbuild-plugin-copy";
 import { cwd } from "process";
@@ -29,6 +30,9 @@ const productionOptions: BuildOptions = {
           to: buildDir,
         },
       ],
+    }),
+    eslintPlugin({
+      throwOnError: true,
     }),
   ],
   write: true,

@@ -11,11 +11,6 @@ export default tseslint.config(
     ignores: ["*.mjs", "*.js"],
     plugins: { import: eslintPluginImport },
     rules: {
-      "@typescript-eslint/explicit-function-return-type": "error",
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "@typescript-eslint/quotes": "error",
-      "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "_" }],
       "func-style": ["error", "expression"],
       "import/newline-after-import": "error",
       "import/order": [
@@ -25,7 +20,6 @@ export default tseslint.config(
           "newlines-between": "always",
         },
       ],
-      indent: ["error", 2],
       "newline-after-var": "error",
       "newline-before-return": "error",
       "no-console": ["error", { allow: ["warn", "table", "info", "error"] }],
@@ -35,7 +29,13 @@ export default tseslint.config(
       "no-trailing-spaces": "error",
       "no-unused-vars": "off",
       "prefer-const": "error",
+      indent: ["error", 2],
       semi: "error",
+      "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/quotes": "error",
+      "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "_" }],
     },
   }
 );

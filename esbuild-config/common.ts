@@ -1,5 +1,4 @@
 import { BuildOptions } from "esbuild";
-import { eslintPlugin } from "esbuild-plugin-eslinter";
 import { esbuildTsChecker } from "esbuild-plugin-ts-checker";
 import { cwd } from "process";
 import { resolve } from "path";
@@ -14,7 +13,6 @@ const options: BuildOptions = {
   entryPoints: [resolve(rootDir, "src/index.tsx")],
   format: "esm",
   plugins: [
-    eslintPlugin(),
     esbuildTsChecker({
       enableBuild: false,
       failOnError: false,

@@ -1,4 +1,5 @@
 import { BuildOptions, context, ServeOptions } from "esbuild";
+import eslintPlugin from "esbuild-plugin-eslint";
 import { cwd } from "process";
 import { resolve } from "path";
 
@@ -13,7 +14,12 @@ const buildOptions: BuildOptions = {
   metafile: true,
   outdir: `${publicDir}/js`,
   platform: "browser",
-  plugins: [...options.plugins!],
+  plugins: [
+    ...options.plugins!,
+    eslintPlugin({
+      throwOnError: false,
+    }),
+  ],
   sourcemap: "inline",
   write: false,
 };
