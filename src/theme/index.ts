@@ -1,4 +1,4 @@
-import { DefaultTheme } from "styled-components";
+import type { DefaultTheme } from "styled-components";
 
 import { colors, devices, fonts } from "./variables";
 
@@ -37,5 +37,4 @@ const theme: DefaultTheme = {
 };
 
 export { css, keyframes, useTheme, styled } from "styled-components";
-export { GlobalStyle } from "./GlobalStyle";
 export { theme };

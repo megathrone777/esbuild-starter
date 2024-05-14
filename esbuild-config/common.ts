@@ -1,5 +1,4 @@
 import { BuildOptions } from "esbuild";
-import { esbuildTsChecker } from "esbuild-plugin-ts-checker";
 import { cwd } from "process";
 import { resolve } from "path";
 
@@ -12,14 +11,7 @@ const options: BuildOptions = {
   entryNames: "bundle",
   entryPoints: [resolve(rootDir, "src/index.tsx")],
   format: "esm",
-  plugins: [
-    esbuildTsChecker({
-      enableBuild: false,
-      failOnError: false,
-      tsconfig: resolve(rootDir, "tsconfig.json"),
-      watch: true,
-    }),
-  ],
+  logLevel: "info",
   preserveSymlinks: true,
   resolveExtensions: [".js", ".ts", ".tsx"],
   splitting: true,

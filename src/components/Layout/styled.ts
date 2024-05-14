@@ -1,5 +1,7 @@
 import { styled } from "~/theme";
 
-export const StyledWrapper = styled.div({});
+export const StyledWrapper = styled.div({
+  position: "relative",
+});
 
 export const StyledContent = styled.div({});

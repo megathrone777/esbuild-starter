@@ -1,7 +1,8 @@
-import { BuildOptions, BuildResult, build } from "esbuild";
+import { type BuildOptions, build } from "esbuild";
 import eslintPlugin from "esbuild-plugin-eslint";
 import { clean } from "esbuild-plugin-clean";
 import { copy } from "esbuild-plugin-copy";
+import { esbuildTsChecker } from "esbuild-plugin-ts-checker";
 import { cwd } from "process";
 import { resolve } from "path";
 
@@ -9,6 +10,7 @@ import { options } from "./common";
 
 const rootDir: string = cwd();
 const buildDir: string = resolve(rootDir, "build");
+
 const productionOptions: BuildOptions = {
   ...options,
   drop: ["console"],
@@ -16,7 +18,6 @@ const productionOptions: BuildOptions = {
   minify: true,
   outdir: `${buildDir}/js`,
   plugins: [
-    ...options.plugins!,
     clean({
       cleanOn: "start",
       patterns: ["build", "public/js"],
@@ -30,6 +31,13 @@ const productionOptions: BuildOptions = {
           to: buildDir,
         },
       ],
+      copyOnStart: false,
+    }),
+    esbuildTsChecker({
+      enableBuild: true,
+      failOnError: true,
+      tsconfig: resolve(rootDir, "tsconfig.json"),
+      watch: false,
     }),
     eslintPlugin({
       throwOnError: true,
@@ -40,19 +48,15 @@ const productionOptions: BuildOptions = {
 
 (async (): Promise<void> => {
   console.info("\x1b[32m%s\x1b[0m", "Compiling...");
-  await build(productionOptions)
-    .then((result: BuildResult): void => {
-      if (result && !!result.errors.length) {
-        console.error(result.errors);
+  const { errors, warnings } = await build(productionOptions);
 
-        return;
-      }
+  if (errors.length) {
+    console.error(errors);
+    process.exit(1);
+  }
 
-      console.info("\x1b[32m%s\x1b[0m", "Compiled successfully!");
-      process.exit(0);
-    })
-    .catch((): void => {
-      console.error("Build failed!");
-      process.exit(1);
-    });
+  if (warnings.length) {
+    console.warn(warnings);
+    return;
+  }
 })();

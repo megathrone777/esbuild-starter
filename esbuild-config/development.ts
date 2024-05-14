@@ -1,5 +1,6 @@
 import { BuildOptions, context, ServeOptions } from "esbuild";
 import eslintPlugin from "esbuild-plugin-eslint";
+import { esbuildTsChecker } from "esbuild-plugin-ts-checker";
 import { cwd } from "process";
 import { resolve } from "path";
 
@@ -15,7 +16,11 @@ const buildOptions: BuildOptions = {
   outdir: `${publicDir}/js`,
   platform: "browser",
   plugins: [
-    ...options.plugins!,
+    esbuildTsChecker({
+      failOnError: false,
+      tsconfig: resolve(rootDir, "tsconfig.json"),
+      watch: true,
+    }),
     eslintPlugin({
       throwOnError: false,
     }),

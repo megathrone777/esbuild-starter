@@ -22,7 +22,6 @@ export default tseslint.config(
       ],
       "newline-after-var": "error",
       "newline-before-return": "error",
-      "no-console": ["error", { allow: ["warn", "table", "info", "error"] }],
       "no-inline-comments": "error",
       "no-multiple-empty-lines": ["error", { max: 1 }],
       "no-restricted-syntax": ["error", "FunctionDeclaration"],
