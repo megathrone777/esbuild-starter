@@ -1,4 +1,4 @@
-import { BuildOptions, context, ServeOptions } from "esbuild";
+import { context, type BuildOptions, type ServeOptions } from "esbuild";
 import eslintPlugin from "esbuild-plugin-eslint";
 import { esbuildTsChecker } from "esbuild-plugin-ts-checker";
 import { cwd } from "process";
@@ -38,8 +38,6 @@ const serveOptions: ServeOptions = {
 
 (async (): Promise<void> => {
   const esbuildContext = await context(buildOptions);
-  const { host, port } = await esbuildContext.serve(serveOptions);
-
+  await esbuildContext.serve(serveOptions);
   await esbuildContext.watch();
-  console.info("\x1b[32m%s\x1b[0m", `Running on http://${host}:${port}`);
 })();

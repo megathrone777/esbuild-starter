@@ -1,9 +1,9 @@
 import { type BuildOptions, build } from "esbuild";
 import eslintPlugin from "esbuild-plugin-eslint";
 import { clean } from "esbuild-plugin-clean";
-import { copy } from "esbuild-plugin-copy";
 import { esbuildTsChecker } from "esbuild-plugin-ts-checker";
 import { cwd } from "process";
+import { cp } from "fs/promises";
 import { resolve } from "path";
 
 import { options } from "./common";
@@ -23,15 +23,6 @@ const productionOptions: BuildOptions = {
       patterns: ["build", "public/js"],
       sync: false,
       verbose: false,
-    }),
-    copy({
-      assets: [
-        {
-          from: "./public/**/*",
-          to: buildDir,
-        },
-      ],
-      copyOnStart: false,
     }),
     esbuildTsChecker({
       enableBuild: true,
@@ -59,4 +50,8 @@ const productionOptions: BuildOptions = {
     console.warn(warnings);
     return;
   }
+
+  await cp(resolve(rootDir, "public"), buildDir, {
+    recursive: true,
+  });
 })();
