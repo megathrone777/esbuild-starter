@@ -2,7 +2,7 @@ import React, { useReducer, createContext } from "react";
 
 import { initialStore } from "./initialStore";
 import { reducer } from "./reducer";
-import { TContext } from "./types";
+import type { TContext } from "./types";
 
 const AppContext = createContext<TContext>({
   dispatch: (): null => null,

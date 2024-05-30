@@ -1,4 +1,4 @@
-import { TDevices } from "./types";
+import type { TDevices } from "./types";
 
 const sizes: TDevices = {
   mobile: "767px",

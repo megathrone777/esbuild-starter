@@ -1,4 +1,4 @@
-import { TFonts } from "./types";
+import type { TFonts } from "./types";
 
 const fonts: TFonts = {
   bold: 700,

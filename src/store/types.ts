@@ -1,9 +1,13 @@
+import React from "react";
+
 export enum TActionTypes {
-  DO_SMTH = "DO_SMTH",
+  ACTION_EXAMPLE = "ACTION_EXAMPLE",
   DEFAULT = "DEFAULT",
 }
 
-export interface TStore {}
+export interface TStore {
+  products: object[];
+}
 
 export interface TAction<P = unknown> {
   (payload: P): {

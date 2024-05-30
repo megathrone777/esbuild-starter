@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { AppContext, TContext } from "~/store";
+import { AppContext, type TContext } from "~/store";
 
 const useStore = (): TContext => useContext(AppContext);
 

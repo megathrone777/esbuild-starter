@@ -1,5 +1,7 @@
-import { TStore } from "./types";
+import type { TStore } from "./types";
 
-const initialStore: TStore = {};
+const initialStore: TStore = {
+  products: [],
+};
 
 export { initialStore };

@@ -1,6 +1,6 @@
-import { TAction, TActionTypes } from "./types";
+import { type TAction, TActionTypes } from "./types";
 
-export const doSmth: TAction<null> = (payload) => ({
+export const actionExample: TAction<null> = (payload) => ({
   payload,
-  type: TActionTypes.DO_SMTH,
+  type: TActionTypes.ACTION_EXAMPLE,
 });

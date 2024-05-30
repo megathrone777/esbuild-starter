@@ -1,4 +1,4 @@
-import { TColors } from "./types";
+import type { TColors } from "./types";
 
 const colors: TColors = {
   orange: "#ff9b1b",
