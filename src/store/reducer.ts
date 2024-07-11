@@ -1,6 +1,6 @@
 import type { Reducer } from "react";
 
-import { TAction, TActionTypes, TStore } from "./types";
+import { type TAction, type TStore, TActionTypes } from "./types";
 
 const reducer: Reducer<TStore, ReturnType<TAction>> = (store, { payload, type }) => {
   console.info(payload);
